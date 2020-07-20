@@ -1,4 +1,4 @@
-# messaging-rabbitmq
+# spring-boot-rabbitm
 
 基于 Spring Boot 的 RabbitMQ 示例代码。
 
