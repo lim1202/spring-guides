@@ -1,2 +1,1 @@
 # spring-guides
-Spring Guides
