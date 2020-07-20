@@ -2,6 +2,8 @@ server:
   port: 5000
 
 spring:
+  application:
+    name: spring-boot-demo
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
@@ -12,6 +14,19 @@ spring:
       schema: public
   liquibase:
     change-log: classpath*:db/changelog/db.changelog-master.xml
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - prometheus
+  endpoint:
+    prometheus:
+      enabled: true
+  metrics:
+    tags: 
+      application: ${spring.application.name}
 
 logging:
   level:
