@@ -1,5 +1,7 @@
 package com.example.jwt.controller;
 
+import javax.validation.Valid;
+
 import com.example.jwt.config.PassAuth;
 import com.example.jwt.entity.User;
 import com.example.jwt.service.TokenService;
@@ -24,7 +26,7 @@ public class UserController {
 
     @PassAuth
     @PostMapping("/login")
-    public String login(@RequestBody User user) {
+    public String login(@RequestBody @Valid User user) {
         User userForAuth = userService.findByCode(user.getAccessCode());
         if(userForAuth == null){
             return "Login failed! User not exist!";
