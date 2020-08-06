@@ -1,4 +1,4 @@
-package com.example.messagingrabbitmq.config;
+package com.example.rabbitmq.config;
 
 import org.springframework.stereotype.Component;
 

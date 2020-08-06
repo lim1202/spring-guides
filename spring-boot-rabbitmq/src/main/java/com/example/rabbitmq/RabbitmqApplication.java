@@ -1,13 +1,13 @@
-package com.example.messagingrabbitmq;
+package com.example.rabbitmq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MessagingRabbitmqApplication  {
+public class RabbitmqApplication  {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MessagingRabbitmqApplication.class, args);
+		SpringApplication.run(RabbitmqApplication.class, args);
 	}
 
 }
