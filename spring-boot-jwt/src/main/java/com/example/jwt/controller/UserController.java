@@ -26,7 +26,7 @@ public class UserController {
 
     @PassAuth
     @PostMapping("/login")
-    public String login(@RequestBody @Valid User user) {
+    public String login(@Valid @RequestBody User user) {
         User userForAuth = userService.findByCode(user.getAccessCode());
         if(userForAuth == null){
             return "Login failed! User not exist!";
