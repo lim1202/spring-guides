@@ -20,14 +20,14 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.SWAGGER_2)
             .apiInfo(apiInfo())
             .select()
-            .apis(RequestHandlerSelectors.any())
+            .apis(RequestHandlerSelectors.basePackage("com.example.demo.controller"))
             .paths(PathSelectors.any())
             .build();
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("spring boot demo project")
-            .description("宁波纳原科技有限公司")
+        return new ApiInfoBuilder().title("Spring Boot Demo Project")
+            .description("example co.ltd")
             .build();
     }
     
