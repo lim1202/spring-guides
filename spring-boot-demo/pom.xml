@@ -38,11 +38,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>io.sentry</groupId>
-			<artifactId>sentry-logback</artifactId>
-			<version>1.7.30</version>
-		</dependency>
-		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-registry-prometheus</artifactId>
 			<scope>runtime</scope>

@@ -1,8 +1,8 @@
 package com.example.demo.common;
 
 enum ResultEnum {
-    SUCCESS(200, "success"),
-    FAILED(500, "failed");
+    SUCCESS(200, "Success"),
+    FAILED(500, "Failed");
 
     private final int code;
     private final String message;
