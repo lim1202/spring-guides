@@ -1,13 +1,11 @@
 # spring-boot-demo
 
-基于 Spring Boot 的模板工程。
+## Installation
 
-## 安装环境
+- JDK 11
+- Maven 3.6
 
-- JDK 1.8
-- Maven 3.2
-
-## 依赖组件
+## Dependencies
 
 - [Spring Web](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
 - [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)
