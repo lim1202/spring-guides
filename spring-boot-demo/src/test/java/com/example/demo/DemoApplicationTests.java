@@ -25,11 +25,11 @@ class DemoApplicationTests {
 
 	@Test
 	public void hello() throws Exception {
-		this.mockMvc.perform(get("/api/hello").param("name", "World"))
+		this.mockMvc.perform(get("/api/hello/world"))
 		.andDo(MockMvcResultHandlers.print())
 		.andExpect(status().isOk())
 		.andExpect(jsonPath("$.code").value(200))
-		.andExpect(jsonPath("$.message").value("Success"))
-		.andExpect(jsonPath("$.data").value("Hello World"));
+		.andExpect(jsonPath("$.message").value("success"))
+		.andExpect(jsonPath("$.data").value("Hello world"));
 	}
 }
