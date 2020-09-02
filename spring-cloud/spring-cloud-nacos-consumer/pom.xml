@@ -9,6 +9,6 @@
 	</parent>
 	<artifactId>spring-cloud-nacos-consumer</artifactId>
 	<name>nacos-consumer</name>
-	<description>Nacos consumer project for Spring Cloud</description>
+	<description>Demo consumer project for Spring Cloud Nacos</description>
 	<packaging>jar</packaging>
 </project>

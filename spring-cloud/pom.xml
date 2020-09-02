@@ -12,7 +12,7 @@
 	<artifactId>spring-cloud</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>alibaba</name>
-	<description>Alibaba project for Spring Cloud</description>
+	<description>Demo project for Spring Cloud Alibaba</description>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -89,6 +89,7 @@
 	</build>
 
 	<modules>
+		<module>spring-cloud-gateway</module>
 		<module>spring-cloud-nacos-provider</module>
 		<module>spring-cloud-nacos-consumer</module>
 	</modules>
