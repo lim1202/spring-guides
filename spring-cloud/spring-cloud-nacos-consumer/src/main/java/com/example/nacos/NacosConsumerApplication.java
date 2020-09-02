@@ -30,7 +30,7 @@ public class NacosConsumerApplication {
         @Value("${spring.application.name}")
         private String appName;
 
-        @GetMapping("/echo/app-name")
+        @GetMapping("/echo/app")
         public String echoAppName(){
             return nacosProviderService.echo(appName);
         }

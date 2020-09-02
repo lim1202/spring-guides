@@ -1,5 +1,7 @@
 package com.example.nacos;
 
+import java.util.UUID;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -19,7 +21,7 @@ public class NacosProviderApplication {
     public class EchoController {
         @GetMapping(value = "/echo/{string}")
         public String echo(@PathVariable String string) {
-            return "Hello Nacos Discovery " + string;
+            return String.format("Hello Nacos! %s [%s]", string, UUID.randomUUID().toString());
         }
     }
 }
