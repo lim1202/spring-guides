@@ -9,6 +9,6 @@ spring:
         server-addr: 127.0.0.1:8848
         file-extension: yml
         shared-configs:
-          - application.yml
+        - application.yml
       discovery:
         server-addr: 127.0.0.1:8848
