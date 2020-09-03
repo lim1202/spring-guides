@@ -6,20 +6,20 @@ services:
       PREFER_HOST_MODE: hostname
       MODE: standalone
     ports:
-    - "8848:8848"
+      - "8848:8848"
   postgres:
     image: postgres:latest
-    environment:
+    environment: 
       POSTGRES_PASSWORD: postgres
     ports: 
-    - "5432:5432"
+      - "5432:5432"
   rabbitmq:
     image: rabbitmq:management
     ports:
-    - "5672:5672"
-    - "15672:15672"
+      - "5672:5672"
+      - "15672:15672"
   redis:
     image: redis:alpine
     command: redis-server --requirepass redis
     ports:
-    - "6379:6379"
+      - "6379:6379"
