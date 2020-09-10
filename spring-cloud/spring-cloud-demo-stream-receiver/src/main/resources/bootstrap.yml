@@ -1,0 +1,19 @@
+server: 
+  port: 8085
+
+spring:
+  application.name: spring-cloud-demo-stream-receiver
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        shared-configs:
+          - application.yml
+      discovery:
+        server-addr: 127.0.0.1:8848
+    stream:
+      bindings:
+        input:
+          destination: dest-step2
+          group: group-step2

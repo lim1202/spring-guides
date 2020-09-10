@@ -1,0 +1,23 @@
+server: 
+  port: 8084
+
+spring:
+  application.name: spring-cloud-demo-stream-processor
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        shared-configs:
+          - application.yml
+      discovery:
+        server-addr: 127.0.0.1:8848
+    stream:
+      bindings:
+        input:
+          destination: dest-step1
+          group: group-step1
+        output:
+          destination: dest-step2
+          producer:
+            required-groups: group-step2

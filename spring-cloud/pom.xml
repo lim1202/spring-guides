@@ -88,6 +88,9 @@
 		<module>spring-cloud-demo-gateway</module>
 		<module>spring-cloud-demo-nacos-provider</module>
 		<module>spring-cloud-demo-nacos-consumer</module>
+		<module>spring-cloud-demo-stream-sender</module>
+		<module>spring-cloud-demo-stream-processor</module>
+		<module>spring-cloud-demo-stream-receiver</module>
 	</modules>
 
 </project>
