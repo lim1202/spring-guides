@@ -28,7 +28,3 @@ management:
   metrics:
     tags: 
       application: ${spring.application.name}
-
-logging:
-  level:
-    io.swagger.models.parameters.AbstractSerializableParameter: error
