@@ -7,6 +7,10 @@ services:
       MODE: standalone
     ports:
       - "8848:8848"
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
   mysql:
     image: mariadb
     environment:
