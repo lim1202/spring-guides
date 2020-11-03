@@ -4,9 +4,9 @@
     <changeSet id="changelog-1.0-20200701-1" author="lim">
         <preConditions onFail="MARK_RAN">
             <not>
-                <primaryKeyExists tableName="databasechangelog" />
+                <primaryKeyExists tableName="DATABASECHANGELOG" />
             </not>
         </preConditions>
-        <addPrimaryKey tableName="databasechangelog" columnNames="ID"/>
+        <addPrimaryKey tableName="DATABASECHANGELOG" columnNames="ID"/>
     </changeSet>
 </databaseChangeLog>

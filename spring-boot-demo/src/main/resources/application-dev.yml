@@ -3,11 +3,17 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver
     type: com.zaxxer.hikari.HikariDataSource
-    hikari:
-      schema: public
+    url: jdbc:mysql://localhost:3306/default
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # url: jdbc:postgresql://localhost:5432/postgres
+    # username: postgres
+    # password: postgres
+    # driver-class-name: org.postgresql.Driver
+    # hikari:
+      # schema: public
+  liquibase:
+    change-log: classpath*:db/changelog/db.changelog-master.xml
 
