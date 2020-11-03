@@ -2,3 +2,30 @@ spring:
   profiles:
     active:
     - dev
+  application:
+    name: spring-boot-demo
+  liquibase:
+    change-log: classpath*:db/changelog/db.changelog-master.xml
+
+mybatis-plus:
+  configuration:
+    call-setters-on-nulls: true
+  global-config:
+    db-config:
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - prometheus
+  endpoint:
+    prometheus:
+      enabled: true
+  metrics:
+    tags: 
+      application: ${spring.application.name}

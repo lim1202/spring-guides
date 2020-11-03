@@ -2,8 +2,6 @@ server:
   port: 5000
 
 spring:
-  application:
-    name: spring-boot-demo
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:mysql://localhost:3306/default
@@ -19,16 +17,3 @@ spring:
   liquibase:
     change-log: classpath*:db/changelog/db.changelog-master.xml
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-          - health
-          - prometheus
-  endpoint:
-    prometheus:
-      enabled: true
-  metrics:
-    tags: 
-      application: ${spring.application.name}
