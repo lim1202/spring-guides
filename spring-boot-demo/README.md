@@ -15,3 +15,4 @@
 - [SLF4J+logback](http://logback.qos.ch/documentation.html)
 - [MyBatis-Plus](https://mybatis.plus/guide/)
 - [Swagger](https://swagger.io/docs/)
+- [SonarScanner](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/)
