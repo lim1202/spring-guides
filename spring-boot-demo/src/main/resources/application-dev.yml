@@ -8,16 +8,17 @@ spring:
         strict: false #设置严格模式,默认false不启动. 启动后在未匹配到指定数据源时候会抛出异常,不启动则使用默认数据源.
         datasource:
           master:
-            type: com.zaxxer.hikari.HikariDataSource
             url: jdbc:mysql://localhost:3306/default
             username: root
             password: mysql
             driver-class-name: com.mysql.cj.jdbc.Driver
+            type: com.zaxxer.hikari.HikariDataSource
           slave:
             url: jdbc:postgresql://localhost:5432/postgres
             username: postgres
             password: postgres
             driver-class-name: org.postgresql.Driver
+            type: com.zaxxer.hikari.HikariDataSource
             hikari:
               schema: public
   liquibase:
