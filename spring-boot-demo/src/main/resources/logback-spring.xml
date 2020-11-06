@@ -47,7 +47,6 @@
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILEOUT" />
 		<appender-ref ref="FILEERR" />
-		<appender-ref ref="DB" />
 	</root>
 
 </configuration>
