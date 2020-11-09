@@ -1,10 +1,17 @@
 package ${package.ServiceImpl};
 
+import com.nayuan.kpro.api.admin.common.ResultEnum;
+import com.nayuan.kpro.api.admin.exception.BusinessException;
 import ${package.Entity}.${entity};
 import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
-import ${superServiceImplClassPackage};
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
+import ${superServiceImplClassPackage};
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 /**
  * <p>
@@ -22,5 +29,33 @@ open class ${table.serviceImplName} : ${superServiceImplClass}<${table.mapperNam
 <#else>
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
 
+    @Autowired
+    ${table.mapperName} ${table.mapperName?uncap_first};
+
+    @Override
+    public Page<${entity}> listPage(Page<${entity}> page) {
+        QueryWrapper<${entity}> queryWrapper = new QueryWrapper<>();
+        return ${table.mapperName?uncap_first}.selectPage(page, queryWrapper);
+    }
+
+    @Override
+    @Transactional
+    public boolean create(${entity} ${entity?uncap_first}) {
+        ${entity?uncap_first}.setId(null);
+        return save(${entity?uncap_first});
+    }
+
+    @Override
+    @Transactional
+    public boolean update(${entity} ${entity?uncap_first}) {
+        ${entity} ${entity?uncap_first}Origin = getById(${entity?uncap_first}.getId());
+        if (ObjectUtils.isEmpty(${entity?uncap_first}Origin)) {
+            throw new BusinessException(ResultEnum.A0201);
+        }
+
+        ${entity?uncap_first}.setVersion(${entity?uncap_first}Origin.getVersion());
+        return updateById(${entity?uncap_first});
+    }
+    
 }
 </#if>
