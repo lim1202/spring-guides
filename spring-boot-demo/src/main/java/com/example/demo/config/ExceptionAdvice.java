@@ -19,14 +19,14 @@ public class ExceptionAdvice {
     public ResponseEntity<ResultEntity<?>> handleException(Exception e) {
         if (e instanceof BusinessException) {
             BusinessException businessException = (BusinessException) e;
-            log.error(String.format("☢️ %s:%s", businessException.getResult().getCode(), businessException.getResult().getMessage()), e);
+            log.error(String.format("⛔️ %s:%s", businessException.getResult().getCode(), businessException.getResult().getMessage()), e);
             return ResponseEntity.ok(ResultEntity.error(businessException.getMessage(), businessException.getResult()));
         } else if (e instanceof ForbiddenException) {
             ForbiddenException forbiddenException = (ForbiddenException) e;
-            log.error(String.format("☢️ %s:%s", forbiddenException.getResult().getCode(), forbiddenException.getResult().getMessage()), e);
+            log.error(String.format("⛔️ %s:%s", forbiddenException.getResult().getCode(), forbiddenException.getResult().getMessage()), e);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ResultEntity.error(forbiddenException.getMessage(), forbiddenException.getResult()));
 		} else {
-            log.error("☢️", e);
+            log.error("⛔️", e);
 			return ResponseEntity.ok(ResultEntity.error());
 		}
     }

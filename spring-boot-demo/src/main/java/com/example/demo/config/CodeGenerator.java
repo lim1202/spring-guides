@@ -23,6 +23,8 @@ import org.springframework.util.StringUtils;
 
 
 public class CodeGenerator {
+    
+    private static final String PACKAGE = "com.example.demo";
 
     /**
      * <p>
@@ -53,7 +55,7 @@ public class CodeGenerator {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-        String projectPath = System.getProperty("user.dir");
+        String projectPath = System.getProperty("user.dir") + "/spring-boot-demo";
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("example");
         gc.setBaseResultMap(true);
@@ -69,17 +71,21 @@ public class CodeGenerator {
         // dsc.setDriverName("com.mysql.jdbc.Driver");
         // dsc.setUsername("root");
         // dsc.setPassword("密码");
-        dsc.setUrl("jdbc:postgresql://localhost:5432/postgres");
+        dsc.setUrl("jdbc:mysql://localhost:3306/default");
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
+        dsc.setUsername("root");
+        dsc.setPassword("mysql");
+        // dsc.setUrl("jdbc:postgresql://localhost:5432/postgres");
         // dsc.setSchemaName("public");
-        dsc.setDriverName("org.postgresql.Driver");
-        dsc.setUsername("postgres");
-        dsc.setPassword("postgres");
+        // dsc.setDriverName("org.postgresql.Driver");
+        // dsc.setUsername("postgres");
+        // dsc.setPassword("postgres");
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName(moduleName);
-        pc.setParent("com.example.demo"); // 配置父包名
+        pc.setParent(PACKAGE); // 配置父包名
         pc.setEntity("entity");
         pc.setMapper("mapper");
         mpg.setPackageInfo(pc);
@@ -142,16 +148,18 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        // strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
         // strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
+        strategy.setSuperEntityClass(PACKAGE + ".entity.BaseEntity");
         // 写于父类中的公共字段
-        // strategy.setSuperEntityColumns("id");
+        strategy.setSuperEntityColumns("id", "create_time", "update_time", "version", "deleted");
         strategy.setInclude(tableNames);
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
+        // strategy.setVersionFieldName("version");
+        // strategy.setLogicDeleteFieldName("deleted");
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();

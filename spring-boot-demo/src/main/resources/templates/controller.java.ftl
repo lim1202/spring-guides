@@ -1,7 +1,7 @@
 package ${package.Controller};
 
 
-import com.nayuan.kpro.api.admin.common.ResultEntity;
+import com.example.demo.common.ResultEntity;
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
 

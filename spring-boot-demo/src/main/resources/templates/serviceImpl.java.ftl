@@ -1,7 +1,7 @@
 package ${package.ServiceImpl};
 
-import com.nayuan.kpro.api.admin.common.ResultEnum;
-import com.nayuan.kpro.api.admin.exception.BusinessException;
+import com.example.demo.common.ResultEnum;
+import com.example.demo.exception.BusinessException;
 import ${package.Entity}.${entity};
 import ${package.Mapper}.${table.mapperName};
 import ${package.Service}.${table.serviceName};
