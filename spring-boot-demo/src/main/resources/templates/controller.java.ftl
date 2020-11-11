@@ -61,7 +61,7 @@ public class ${table.controllerName} {
     }
 
     @ApiOperation(value = "创建", httpMethod = "POST")
-    @PostMapping("/")
+    @PostMapping("")
     public ResultEntity<${entity}> create(@RequestBody @Valid ${entity} ${entity?uncap_first}) {
         ${table.serviceName?uncap_first}.create(${entity?uncap_first});
         return ResultEntity.ok(${entity?uncap_first});
