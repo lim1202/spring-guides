@@ -4,7 +4,6 @@ package ${package.Controller};
 import com.example.demo.common.ResultEntity;
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
-
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
