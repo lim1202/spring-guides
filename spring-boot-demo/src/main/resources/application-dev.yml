@@ -21,6 +21,3 @@ spring:
             type: com.zaxxer.hikari.HikariDataSource
             hikari:
               schema: public
-  liquibase:
-    change-log: classpath*:db/changelog/db.changelog-master.xml
-

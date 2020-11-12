@@ -5,7 +5,7 @@ spring:
   application:
     name: spring-boot-demo
   liquibase:
-    change-log: classpath*:db/changelog/db.changelog-master.xml
+    change-log: /db/changelog/db.changelog-master.xml
 
 mybatis-plus:
   configuration:
