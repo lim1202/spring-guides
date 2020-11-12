@@ -3,6 +3,7 @@ package ${package.Entity};
 <#list table.importPackages as pkg>
 import ${pkg};
 </#list>
+import com.fasterxml.jackson.annotation.JsonProperty;
 <#if swagger2>
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -66,6 +67,7 @@ public class ${entity} implements Serializable {
      */
         </#if>
     </#if>
+    @JsonProperty(value = "${field.name}")
     <#if field.keyFlag>
         <#-- 主键 -->
         <#if field.keyIdentityFlag>
