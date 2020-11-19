@@ -83,15 +83,13 @@ public class ${table.controllerName} {
     @PutMapping(value = "/{id}")
     public ResultEntity<String> update(@PathVariable Long id, @RequestBody @Valid ${entity} ${entity?uncap_first}) {
         ${entity?uncap_first}.setId(id);
-        ${table.serviceName?uncap_first}.update(${entity?uncap_first});
-        return ResultEntity.ok();
+        return ResultEntity.ret(${table.serviceName?uncap_first}.update(${entity?uncap_first}));
     }
 
     @ApiOperation(value = "删除", httpMethod = "DELETE")
     @DeleteMapping(value = "/{id}")
     public ResultEntity<String> remove(@PathVariable Long id) {
-        ${table.serviceName?uncap_first}.removeById(id);
-        return ResultEntity.ok();
+        return ResultEntity.ret(${table.serviceName?uncap_first}.removeById(id));
     }
 
 }

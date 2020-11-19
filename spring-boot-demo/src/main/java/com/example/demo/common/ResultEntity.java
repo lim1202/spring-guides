@@ -61,4 +61,8 @@ public class ResultEntity<T> implements Serializable {
         return new ResultEntity<>(data, result.getCode(), result.getMessage(), false);
     }
 
+    public static ResultEntity<String> ret(boolean success) {
+        return success ? ok() : error();
+    }
+    
 }
