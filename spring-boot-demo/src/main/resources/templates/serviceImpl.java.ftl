@@ -39,6 +39,12 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     }
 
     @Override
+    public ${entity} get(Long id) {
+        ${entity} ${entity?uncap_first} = getById(id);
+        return ${entity?uncap_first};
+    }
+
+    @Override
     @Transactional
     public boolean create(${entity} ${entity?uncap_first}) {
         ${entity?uncap_first}.setId(null);
@@ -50,7 +56,7 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     public boolean update(${entity} ${entity?uncap_first}) {
         ${entity} ${entity?uncap_first}Origin = getById(${entity?uncap_first}.getId());
         if (ObjectUtils.isEmpty(${entity?uncap_first}Origin)) {
-            throw new BusinessException(ResultEnum.A0201);
+            throw new BusinessException(ResultEnum.A0400);
         }
 
         ${entity?uncap_first}.setVersion(${entity?uncap_first}Origin.getVersion());

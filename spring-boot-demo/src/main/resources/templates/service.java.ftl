@@ -19,6 +19,8 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
 
     Page<${entity}> listPage(Page<${entity}> page);
     
+    ${entity} get(Long id);
+
     boolean create(${entity} ${entity?uncap_first});
 
     boolean update(${entity} ${entity?uncap_first});

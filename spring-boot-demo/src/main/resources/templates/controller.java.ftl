@@ -1,6 +1,5 @@
 package ${package.Controller};
 
-
 import com.example.demo.common.ResultEntity;
 import ${package.Entity}.${entity};
 import ${package.Service}.${table.serviceName};
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 <#if restControllerStyle>
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +23,8 @@ import ${superControllerClassPackage};
 </#if>
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 /**
@@ -53,8 +55,13 @@ public class ${table.controllerName} {
     ${table.serviceName} ${table.serviceName?uncap_first};
 
     @ApiOperation(value = "查询列表", httpMethod = "POST")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "current", value = "当前页号", dataTypeClass = Long.class),
+        @ApiImplicitParam(name = "size", value = "每页显示条数", dataTypeClass = Long.class)
+    })
     @PostMapping("/query")
-    public ResultEntity<Page<${entity}>> query(@RequestBody Page<${entity}> page) {
+    public ResultEntity<Page<${entity}>> query(@RequestParam(defaultValue = "1") Long current, @RequestParam(defaultValue = "10") Long size) {
+        Page<${entity}> page = new Page<>(current, size);
         Page<${entity}> ${entity?uncap_first}Page = ${table.serviceName?uncap_first}.listPage(page);
         return ResultEntity.ok(${entity?uncap_first}Page);
     }
@@ -69,7 +76,7 @@ public class ${table.controllerName} {
     @ApiOperation(value = "获取", httpMethod = "GET")
     @GetMapping(value = "/{id}")
     public ResultEntity<${entity}> get(@PathVariable Long id) {
-        return ResultEntity.ok(${table.serviceName?uncap_first}.getById(id));
+        return ResultEntity.ok(${table.serviceName?uncap_first}.get(id));
     }
 
     @ApiOperation(value = "修改", httpMethod = "PUT")
