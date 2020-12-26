@@ -28,4 +28,9 @@ public class ForbiddenException extends RuntimeException {
     public ResultEnum getResult() {
         return result;
     }
+
+    @Override
+    public String getMessage() {
+        return String.format("%s:%s - %s", result.getCode(), result.getMessage(), super.getMessage());
+    }
 }
