@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>spring-cloud-demo-nacos-consumer</artifactId>
 	<name>demo-nacos-consumer</name>
-	<description>Demo consumer project for Spring Cloud Nacos</description>
+	<description>Demo consumer project for Spring Cloud Alibaba</description>
 	<packaging>jar</packaging>
 
 	<dependencies>

@@ -15,7 +15,7 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 @Primary
 @ConfigurationProperties(prefix = "spring.cloud.gateway")
 public class SwaggerProvider implements SwaggerResourcesProvider {
-	public static final String API_URI = "/v2/api-docs";
+	public static final String API_DOCS_URI = "/v3/api-docs";
 
 	private List<Map<String, String>> routes;
 
@@ -31,7 +31,7 @@ public class SwaggerProvider implements SwaggerResourcesProvider {
 	public List<SwaggerResource> get() {
 		List<SwaggerResource> resources = new ArrayList<>(routes.size());
 		for (Map<String, String> entry : routes) {
-			resources.add(swaggerResource(entry.get("id"), String.format("/%s%s", entry.get("id"), API_URI), "2.0"));
+			resources.add(swaggerResource(entry.get("id"), String.format("/%s%s", entry.get("id"), API_DOCS_URI), "3.0"));
 		}
 		return resources;
 	}
