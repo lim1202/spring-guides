@@ -21,11 +21,11 @@ public class ExceptionAdvice {
         if (e instanceof BusinessException) {
             BusinessException businessException = (BusinessException) e;
             log.error("⛔️ {}", businessException.getResultMessage());
-            return ResponseEntity.ok(ResultEntity.error(businessException.getMessage(), businessException.getResult()));
+            return ResponseEntity.ok(ResultEntity.error(businessException.getResult(), businessException.getDescription()));
         } else if (e instanceof ForbiddenException) {
             ForbiddenException forbiddenException = (ForbiddenException) e;
             log.error("⛔️ {}", forbiddenException.getResultMessage());
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ResultEntity.error(forbiddenException.getMessage(), forbiddenException.getResult()));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ResultEntity.error(forbiddenException.getResult(), forbiddenException.getDescription()));
 		} else {
             log.error("⛔️ {}:{}", ResultEnum.FAILED.getCode(), ResultEnum.FAILED.getMessage(), e);
 			return ResponseEntity.ok(ResultEntity.error(e.toString()));

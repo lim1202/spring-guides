@@ -11,26 +11,41 @@ public class ForbiddenException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
     private final ResultEnum result;
+    private final String description;
 
     public ForbiddenException() {
-        this.result = ResultEnum.A0311;
+        super(ResultEnum.A0301.getMessage());
+        this.result = ResultEnum.A0301;
+        this.description = "";
+    }
+
+    public ForbiddenException(String description) {
+        super(ResultEnum.A0301.getMessage());
+        this.result = ResultEnum.A0301;
+        this.description = description;
     }
 
     public ForbiddenException(ResultEnum result) {
+        super(ResultEnum.A0301.getMessage());
         this.result = result;
+        this.description = "";
     }
 
-    public ForbiddenException(ResultEnum result, String message) {
-        super(message);
+    public ForbiddenException(ResultEnum result, String description) {
+        super(result.getMessage());
         this.result = result;
+        this.description = description;
     }
 
     public ResultEnum getResult() {
         return result;
     }
 
-    public String getResultMessage() {
-        return String.format("%s:%s - %s", result.getCode(), result.getMessage(), super.getMessage());
+    public String getDescription() {
+        return description;
     }
-    
+
+    public String getResultMessage() {
+        return String.format("%s:%s - %s", result.getCode(), result.getMessage(), description);
+    }
 }
