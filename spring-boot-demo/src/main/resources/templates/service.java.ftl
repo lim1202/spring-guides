@@ -25,5 +25,6 @@ public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
 
     boolean update(${entity} ${entity?uncap_first});
     
+    boolean remove(Long id);
 }
 </#if>

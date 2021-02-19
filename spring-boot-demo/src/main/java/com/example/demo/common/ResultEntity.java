@@ -65,6 +65,10 @@ public class ResultEntity<T> implements Serializable {
         return new ResultEntity<>(null, ResultEnum.FAILED.getCode(), ResultEnum.FAILED.getMessage(), description, false);
     }
 
+    public static <T> ResultEntity<T> error(ResultEnum result) {
+        return new ResultEntity<>(null, result.getCode(), result.getMessage(), "", false);
+    }
+    
     public static <T> ResultEntity<T> error(ResultEnum result, String description) {
         return new ResultEntity<>(null, result.getCode(), result.getMessage(), description, false);
     }

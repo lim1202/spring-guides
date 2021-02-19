@@ -45,14 +45,14 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public boolean create(${entity} ${entity?uncap_first}) {
         ${entity?uncap_first}.setId(null);
         return save(${entity?uncap_first});
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public boolean update(${entity} ${entity?uncap_first}) {
         ${entity} ${entity?uncap_first}Origin = getById(${entity?uncap_first}.getId());
         if (ObjectUtils.isEmpty(${entity?uncap_first}Origin)) {
@@ -61,6 +61,16 @@ public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.m
 
         ${entity?uncap_first}.setVersion(${entity?uncap_first}Origin.getVersion());
         return updateById(${entity?uncap_first});
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public boolean remove(Long id) {
+        ${entity} ${entity?uncap_first}Origin = getById(id);
+        if (ObjectUtils.isEmpty(${entity?uncap_first}Origin)) {
+            throw new BusinessException(ResultEnum.A0400);
+        }
+        return removeById(id);
     }
     
 }

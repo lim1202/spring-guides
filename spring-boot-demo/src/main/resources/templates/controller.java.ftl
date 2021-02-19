@@ -74,22 +74,22 @@ public class ${table.controllerName} {
     }
 
     @ApiOperation(value = "获取", httpMethod = "GET")
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public ResultEntity<${entity}> get(@PathVariable Long id) {
         return ResultEntity.ok(${table.serviceName?uncap_first}.get(id));
     }
 
     @ApiOperation(value = "修改", httpMethod = "PUT")
-    @PutMapping(value = "/{id}")
+    @PutMapping("/{id}")
     public ResultEntity<String> update(@PathVariable Long id, @RequestBody @Valid ${entity} ${entity?uncap_first}) {
         ${entity?uncap_first}.setId(id);
         return ResultEntity.ret(${table.serviceName?uncap_first}.update(${entity?uncap_first}));
     }
 
     @ApiOperation(value = "删除", httpMethod = "DELETE")
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("/{id}")
     public ResultEntity<String> remove(@PathVariable Long id) {
-        return ResultEntity.ret(${table.serviceName?uncap_first}.removeById(id));
+        return ResultEntity.ret(${table.serviceName?uncap_first}.remove(id));
     }
 
 }
