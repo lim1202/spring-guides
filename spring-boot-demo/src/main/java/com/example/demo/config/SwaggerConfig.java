@@ -2,6 +2,7 @@ package com.example.demo.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RequestAttribute;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -20,13 +21,14 @@ public class SwaggerConfig {
             .select()
             .apis(RequestHandlerSelectors.basePackage("com.example.demo"))
             .paths(PathSelectors.any())
-            .build();
+            .build()
+            .ignoredParameterTypes(RequestAttribute.class);
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("Spring Boot Demo Project")
             .description("example co.ltd")
-            .version("0.0.1")
+            .version("0.0.1-SNAPSHOT")
             .build();
     }
     
