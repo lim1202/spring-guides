@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class User {
 
     Integer id;
+    
     String name;
 
     @NotNull

@@ -54,7 +54,7 @@ public class BusinessException extends RuntimeException {
     }
 
     public String getResultMessage() {
-        return String.format("%s:%s - %s", this.code, this.getMessage(), description);
+        return String.format("%s:%s - %s", this.code, this.getMessage(), this.description);
     }
     
 }

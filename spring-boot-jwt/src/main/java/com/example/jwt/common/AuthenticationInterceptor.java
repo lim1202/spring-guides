@@ -38,25 +38,23 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         HandlerMethod handlerMethod = (HandlerMethod)handler;
         Method method = handlerMethod.getMethod();
 
-        if (method.isAnnotationPresent(PassAuth.class)) {
-            if (method.getAnnotation(PassAuth.class).enabled()) {
-                return true;
-            }
+        if (method.isAnnotationPresent(PassAuth.class) && method.getAnnotation(PassAuth.class).enabled()) {
+            return true;
         }
 
-        String authorization = request.getHeader("Authorization");
-        if (StringUtils.isEmpty(authorization)) throw new ForbiddenException();
-        if (!StringUtils.startsWithIgnoreCase(authorization, "Bearer ")) throw new ForbiddenException();
+        String authorization = request.getHeader(TokenConstant.HEADER_NAME);
+        if (!StringUtils.hasText(authorization)) throw new ForbiddenException();
+        if (!StringUtils.startsWithIgnoreCase(authorization, TokenConstant.HEADER_PREFIX)) throw new ForbiddenException();
         String token = authorization.substring(7);
         
-        String code;
+        String audience;
         try {
-            code = JWT.decode(token).getAudience().get(0);
+            audience = JWT.decode(token).getAudience().get(0);
         } catch (JWTDecodeException e) {
             throw new ForbiddenException();
         }
 
-        User user = userService.findByCode(code);
+        User user = userService.findByCode(audience);
         if (ObjectUtils.isEmpty(user)) {
             throw new ForbiddenException();
         }

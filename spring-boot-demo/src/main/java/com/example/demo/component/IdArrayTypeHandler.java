@@ -47,7 +47,7 @@ public class IdArrayTypeHandler implements TypeHandler<List<Long>> {
     
     private List<Long> stringToLongArray(String resultString) {
         List<Long> resultList = new ArrayList<>();
-        if (StringUtils.isEmpty(resultString)) return resultList;
+        if (!StringUtils.hasText(resultString)) return resultList;
         String[] arr = resultString.split(TextConstant.DELIMITER);
         if (arr.length == 0) return resultList;
         for (String s : arr) {

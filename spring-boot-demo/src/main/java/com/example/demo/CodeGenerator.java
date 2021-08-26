@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.example.demo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class CodeGenerator {
         System.out.println(help.toString());
         if (scanner.hasNext()) {
             String ipt = scanner.next();
-            if (!StringUtils.isEmpty(ipt)) {
+            if (!StringUtils.hasText(ipt)) {
                 return ipt;
             }
         }

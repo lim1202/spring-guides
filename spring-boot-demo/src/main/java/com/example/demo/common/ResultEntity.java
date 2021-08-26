@@ -68,7 +68,7 @@ public class ResultEntity<T> implements Serializable {
     public static <T> ResultEntity<T> error(ResultEnum result) {
         return new ResultEntity<>(null, result.getCode(), result.getMessage(), "", false);
     }
-    
+
     public static <T> ResultEntity<T> error(ResultEnum result, String description) {
         return new ResultEntity<>(null, result.getCode(), result.getMessage(), description, false);
     }

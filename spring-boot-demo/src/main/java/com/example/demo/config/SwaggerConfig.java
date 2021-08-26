@@ -28,7 +28,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("Spring Boot Demo Project")
             .description("example co.ltd")
-            .version("0.0.1-SNAPSHOT")
+            .version("0.0.2-SNAPSHOT")
             .build();
     }
     

@@ -28,8 +28,8 @@ class DemoApplicationTests {
 		this.mockMvc.perform(get("/api/hello/world"))
 		.andDo(MockMvcResultHandlers.print())
 		.andExpect(status().isOk())
-		.andExpect(jsonPath("$.code").value(200))
-		.andExpect(jsonPath("$.message").value("success"))
+		.andExpect(jsonPath("$.code").value("00000"))
+		.andExpect(jsonPath("$.message").value("OK"))
 		.andExpect(jsonPath("$.data").value("Hello world"));
 	}
 }

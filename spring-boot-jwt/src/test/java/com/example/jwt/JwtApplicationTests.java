@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.nio.charset.Charset;
 
+import com.example.jwt.common.TokenConstant;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -43,7 +45,7 @@ class JwtApplicationTests {
 		MvcResult result = this.mockMvc.perform(post("/api/login").contentType(APPLICATION_JSON_UTF8)
 			.content(ACCESS_JSON)).andExpect(status().isOk()).andReturn();
 		String token = result.getResponse().getContentAsString();
-		this.mockMvc.perform(get("/api/hello").header("Authorization", "Bearer " + token))
+		this.mockMvc.perform(get("/api/hello").header(TokenConstant.HEADER_NAME, TokenConstant.HEADER_PREFIX + token))
 			.andDo(MockMvcResultHandlers.print())
 			.andExpect(status().isOk()).andExpect(content().string("Hello"));
 	}	
